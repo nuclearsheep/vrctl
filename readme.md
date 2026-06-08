@@ -1,0 +1,1 @@
+I'm making this tool because PCVR on linux is a huge pain and I want to take the guesswork out of it. This is just a diagnostic tool. It scans wivrn, vrchat, host environment, and any other items related to getting me into VR. 

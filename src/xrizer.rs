@@ -39,10 +39,11 @@ pub fn run_xrizer_diagnostic(sys: &System) {
 //fn verify_launch_arguments<T: AsRef<str>>(cmd_args: &[T]) {
 fn verify_launch_arguments(cmd_args: &[String]) {
 // This was originally written to take in an OsString and process it into a string, but sysinfo::proc.cmd() outputs clean strings.
-    let mut args_string = String::new();
+    let args_string = &cmd_args;
 
     // Check if Steam actually appended the override path to the execution string
-    if args_string.contains("VR_OVERRIDE") || args_string.contains("xrizer") {
+    if args_string.iter().any(|s| s == "VR_OVERRIDE" || s == "xrizer") {
+//    if args_string.contains("VR_OVERRIDE") || args_string.contains("xrizer") {
         println!("    ├── [🟩] Steam Launch Check: Steam tried to pass xrizer to the execution call.");
         println!("    └── [⚠️] Diagnosis: Steam passed it, but the srt-bwrap sandbox stripped it out.");
     } else {
