@@ -5,6 +5,7 @@ use sysinfo::System;
 // Declare our custom separate modules
 mod process;
 mod scanner;
+mod xrizer;
 
 fn main() {
     let mut sys = System::new_all();
@@ -22,6 +23,9 @@ fn main() {
 
         // Sense 2: Penetrate sandboxes to verify target path inheritance
         scanner::run_environment_scan(&sys);
+
+	// Sense 3: Xrizer health check
+	xrizer::run_xrizer_diagnostic(&sys);
 
         println!("\n==================================================");
         thread::sleep(Duration::from_secs(4));
